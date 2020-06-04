@@ -1,7 +1,7 @@
 import GameSavingLoader from '../gameSavingLoader';
 
 describe('GameSavingLoader:', () => {
-  test('should return Object', () => {
+  test('should return Object', async () => {
     const result = {
       id: 9,
       created: 1546300800,
@@ -12,8 +12,7 @@ describe('GameSavingLoader:', () => {
         points: 2000,
       },
     };
-    GameSavingLoader.load().then((saving) => {
-      expect(JSON.parse(saving)).toEqual(result);
-    });
+    const data = await GameSavingLoader.load();
+    expect(JSON.parse(data)).toEqual(result);
   });
 });
